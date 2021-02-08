@@ -24,7 +24,7 @@
 
         <!-- Category Parent -->
         <div class="form-group">
-            <label for="category-parent" class="col-sm-3 control-label">Category</label>
+            <label for="category-parent" class="col-sm-3 control-label">Category Parent</label>
             <div class="col-sm-6">
                 <select name="category_parent" id="category-parent" class="form-control">
                     <option selected value="">-</option>
