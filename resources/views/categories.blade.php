@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="category-name" class="col-sm-3 control-label">Category Name</label>
             <div class="col-sm-6">
-                <input type="text" name="name" id="category-name" class="form-control">
+                <input type="text" name="name" id="category-name" class="form-control" value="{{ config('app.env') }}">
             </div>
         </div>
 

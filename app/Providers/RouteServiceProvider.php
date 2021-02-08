@@ -34,20 +34,22 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        resolve(\Illuminate\Routing\UrlGenerator::class)->forceScheme('https');
+    {  
         $this->configureRateLimiting();
-
+        
         $this->routes(function () {
             Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+            
             Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
         });
+
+        if (config('app.env') != "local")
+            resolve(\Illuminate\Routing\UrlGenerator::class)->forceScheme('https');
     }
 
     /**

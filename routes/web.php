@@ -21,7 +21,7 @@ Route::get('/category', function () {
  * Add New Categories
  */
 Route::post('/category', function (Request $request) {
-    $name = (!empty($request->category_parent)) ? Category::select("name")->where('id', $request->category_parent)->get()[0]['name'] . ">$request->name" : null;
+    $name = (!empty($request->category_parent)) ? Category::select("name")->where('id', $request->category_parent)->get()[0]['name'] . ">$request->name" : $request->name;
 
     $category = new Category;
     $category->name = $name;
