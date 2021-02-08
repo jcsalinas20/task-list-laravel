@@ -4,12 +4,42 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Task;
+use App\Models\Category;
+
+/**
+ * Add New Categories
+ */
+Route::get('/category', function () {
+    $categories = Category::select("*")->orderBy('name', 'asc')->get();
+
+    return view('categories', [
+        'categories' => $categories
+    ]);
+});
+
+/**
+ * Add New Categories
+ */
+Route::post('/category', function (Request $request) {
+    $name = (!empty($request->category_parent)) ? Category::select("name")->where('id', $request->category_parent)->get()[0]['name'] . ">$request->name" : null;
+
+    $category = new Category;
+    $category->name = $name;
+    $category->parent = $request->category_parent;
+    $category->save();
+
+    return redirect('/category');
+});
 
 /**
  * Show Task Dashboard
  */
 Route::get('/', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
+    $tasks['cat'] = Category::select("*")->orderBy('name', 'asc')->get();
+
+    $tasks['list'] = Task::orderBy('created_at', 'asc')->get();
+    for ($i = 0; $i < sizeOf($tasks['list']); $i++)
+        $tasks['list'][$i]['cat_name'] = Category::select("name")->where("id", $tasks['list'][$i]['cat_id'])->get()[0]['name'];
 
     return view('tasks', [
         'tasks' => $tasks
@@ -32,6 +62,9 @@ Route::post('/task', function (Request $request) {
 
     $task = new Task;
     $task->name = $request->name;
+    if (!empty($request->priority)) $task->priority = $request->priority;
+    if (!empty($request->limit)) $task->limit = $request->limit;
+    $task->cat_id = $request->category;
     $task->save();
 
     return redirect('/');

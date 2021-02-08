@@ -17,9 +17,36 @@
         <!-- Task Name -->
         <div class="form-group">
             <label for="task" class="col-sm-3 control-label">Task</label>
-
             <div class="col-sm-6">
                 <input type="text" name="name" id="task-name" class="form-control">
+            </div>
+        </div>
+
+        <!-- Task Proprity -->
+        <div class="form-group">
+            <label for="task" class="col-sm-3 control-label">Proprity</label>
+            <div class="col-sm-6">
+                <input type="text" name="priority" id="task-priority" class="form-control">
+            </div>
+        </div>
+
+        <!-- Task Limit -->
+        <div class="form-group">
+            <label for="task" class="col-sm-3 control-label">Limit</label>
+            <div class="col-sm-6">
+                <input type="text" name="limit" id="task-limit" class="form-control">
+            </div>
+        </div>
+
+        <!-- Task Category -->
+        <div class="form-group">
+            <label for="task" class="col-sm-3 control-label">Category</label>
+            <div class="col-sm-6">
+                <select name="category" id="task-category" class="form-control">
+                    @foreach ($tasks['cat'] as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
 
@@ -36,7 +63,7 @@
 
 <!-- Current Tasks -->
 @if (count($tasks) > 0)
-<div class="panel panel-default">
+<div class="panel my-panel panel-default">
     <div class="panel-heading">
         Current Tasks
     </div>
@@ -46,17 +73,35 @@
 
             <!-- Table Headings -->
             <thead>
-                <th>Task</th>
+                <th>Name</th>
+                <th>Proprity</th>
+                <th>Limit</th>
+                <th>Category</th>
                 <th>&nbsp;</th>
             </thead>
 
             <!-- Table Body -->
             <tbody>
-                @foreach ($tasks as $task)
-                <tr>
+                @foreach ($tasks['list'] as $task)
+                <tr id="{{ $task->id }}">
                     <!-- Task Name -->
                     <td class="table-text">
                         <div>{{ $task->name }}</div>
+                    </td>
+
+                    <!-- Task Priority -->
+                    <td class="table-text">
+                        <div>{{ $task->priority }}</div>
+                    </td>
+
+                    <!-- Task Limit -->
+                    <td class="table-text">
+                        <div>{{ (empty($task->limit)) ? '-' : $task->limit }}</div>
+                    </td>
+
+                    <!-- Task Category -->
+                    <td class="table-text">
+                        <div>{{ $task->cat_name }}</div>
                     </td>
 
                     <!-- Delete Button -->
