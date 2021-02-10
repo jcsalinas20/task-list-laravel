@@ -19,6 +19,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <style>
         body {
             background-color: #212121;
@@ -55,20 +60,20 @@
         .my-panel {
             width: 90%;
             margin: auto;
-            background-color: #ffe4e4;
-            box-shadow: 0 0 11px 1px red;
-            border: 1px solid indianred;
+            background-color: #bde8fd;
+            box-shadow: 0 0 11px 1px #00c4ff;
+            border: 1px solid #00adff;
         }
 
         .my-panel>.panel-heading {
             font-size: 22px;
             font-weight: bold;
             text-align: center;
-            background-color: indianred;
+            background-color: #00adff;
         }
 
         .table-striped>tbody>tr:nth-of-type(odd) {
-            background-color: #ffd2d2;
+            background-color: #77cef9;
         }
 
         button.btn.btn-danger {
@@ -79,6 +84,24 @@
             background-color: #8c1815;
             box-shadow: 0 0 7px black;
         }
+
+        .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+            outline: thin dotted;
+            outline: none;
+            outline-offset: unset;
+        }
+
+        .btn.focus, .btn:focus {
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .card-body li {
+            font-size: 16px;
+        }
+        .card-body ol {
+            margin-bottom: 0px;
+        }
     </style>
 
 </head>
@@ -87,11 +110,14 @@
     <nav class="navbar navbar-expand-lg navbar-dark my-nav">  
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Tasks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/category">Add Category</a>
+                    <a class="nav-link" href="/category/show">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/category/add">Add Category</a>
                 </li>
             </ul>
         </div>

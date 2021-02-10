@@ -44,6 +44,44 @@
             </div>
         </div>
     </form>
+    {{-- <table class="table table-striped task-table">
+
+        <!-- Table Headings -->
+        <thead>
+            <th>Name</th>
+            <th>Category</th>
+            <th>&nbsp;</th>
+        </thead>
+
+        <!-- Table Body -->
+        <tbody>
+            @foreach ($categories as $category)
+            <tr id="{{ $category->id }}">
+                <!-- Task Name -->
+                <td class="table-text">
+                    <div>{{ $category->name }}</div>
+                </td>
+
+                <!-- Task Category -->
+                <td class="table-text">
+                    <div>{{ $category->cat_name }}</div>
+                </td>
+
+                <!-- Delete Button -->
+                <td>
+                    <form action="{{ url('/category/detele'.$category->id) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table> --}}
 </div>
 
 @endsection

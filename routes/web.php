@@ -9,10 +9,10 @@ use App\Models\Category;
 /**
  * Add New Categories
  */
-Route::get('/category', function () {
-    $categories = Category::select("*")->orderBy('name', 'asc')->get();
+Route::get('/category/show', function () {
+    $categories = Category::select("*")->with('tasks')->orderBy('name', 'asc')->get();
 
-    return view('categories', [
+    return view('showcategories', [
         'categories' => $categories
     ]);
 });
@@ -20,7 +20,18 @@ Route::get('/category', function () {
 /**
  * Add New Categories
  */
-Route::post('/category', function (Request $request) {
+Route::get('/category/add', function () {
+    $categories = Category::select("*")->orderBy('name', 'asc')->get();
+
+    return view('addcategories', [
+        'categories' => $categories
+    ]);
+});
+
+/**
+ * Add New Categories
+ */
+Route::post('/category/add', function (Request $request) {
     $name = (!empty($request->category_parent)) ? Category::select("name")->where('id', $request->category_parent)->get()[0]['name'] . ">$request->name" : $request->name;
 
     $category = new Category;
@@ -28,7 +39,7 @@ Route::post('/category', function (Request $request) {
     $category->parent = $request->category_parent;
     $category->save();
 
-    return redirect('/category');
+    return redirect('/category/add');
 });
 
 /**
