@@ -7,7 +7,7 @@ use App\Models\Task;
 use App\Models\Category;
 
 /**
- * Add New Categories
+ * Show Categories With Tasks
  */
 Route::get('/category/show', function () {
     $categories = Category::select("*")->with('tasks')->orderBy('name', 'asc')->get();
@@ -16,9 +16,12 @@ Route::get('/category/show', function () {
         'categories' => $categories
     ]);
 });
+Route::get('/category/', function () {
+    return redirect('/category/show');
+});
 
 /**
- * Add New Categories
+ * Categories
  */
 Route::get('/category/add', function () {
     $categories = Category::select("*")->with('category_parent')->orderBy('name', 'asc')->get();
@@ -40,6 +43,15 @@ Route::post('/category/add', function (Request $request) {
     $category->save();
 
     return redirect('/category/add');
+});
+
+/**
+ * Delete Category
+ */
+Route::get('/category/delete', function (Category $category) {
+// $category->delete();
+return view('developing', []);
+// return redirect('/category');
 });
 
 /**
