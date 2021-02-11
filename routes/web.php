@@ -48,9 +48,9 @@ Route::post('/category/add', function (Request $request) {
 Route::get('/', function () {
     $tasks['cat'] = Category::select("*")->orderBy('name', 'asc')->get();
 
-    $tasks['list'] = Task::orderBy('created_at', 'asc')->get();
-    for ($i = 0; $i < sizeOf($tasks['list']); $i++)
-        $tasks['list'][$i]['cat_name'] = Category::select("name")->where("id", $tasks['list'][$i]['cat_id'])->get()[0]['name'];
+    $tasks['list'] = Task::with('categories')->orderBy('created_at', 'asc')->get();
+    // for ($i = 0; $i < sizeOf($tasks['list']); $i++)
+    //     $tasks['list'][$i]['cat_name'] = Category::select("name")->where("id", $tasks['list'][$i]['cat_id'])->get()[0]['name'];
 
     return view('tasks', [
         'tasks' => $tasks

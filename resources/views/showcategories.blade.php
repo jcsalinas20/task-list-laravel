@@ -10,7 +10,7 @@
     <!-- Display Validation Errors -->
     @include('common.errors')
 
-    <h1></h1>
+    <h1 class="title">List of Categories</h1>
     <div id="accordion">
     @foreach ($categories as $category)
             <div class="card">
@@ -26,7 +26,7 @@
                 </div>
                 @if (count($category->tasks))
                 <div id="collapse{{ $category->id }}" class="collapse" aria-labelledby="heading{{ $category->id }}" data-parent="#accordion">
-                    <div class="card-body" style="color: black">
+                    <div class="card-body">
                         <ol>
                             @foreach ($category->tasks as $childCategory)
                             <li>{{ $childCategory->name }}</li>

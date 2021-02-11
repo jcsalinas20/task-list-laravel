@@ -31,6 +31,11 @@
             font-family: 'Lato';
         }
 
+        h1.title {
+            margin: 10px 0 30px 0;
+            text-align: center;
+        }
+
         .fa-btn {
             margin-right: 6px;
         }
@@ -48,9 +53,10 @@
         }
         #navbarNav>ul {
             margin: auto;
+            display: block;
         }
         #navbarNav>ul>li {
-            margin: 0 10px;
+            margin: 0 15px;
         }
 
         .navbar-nav .nav-link {
@@ -101,6 +107,45 @@
         }
         .card-body ol {
             margin-bottom: 0px;
+        }
+
+        div#accordion {
+            box-shadow: 0 0 10px 4px blue;
+        }
+
+        .card {
+            background-color: #383838;
+        }
+
+        div#accordion button.btn-link {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        div#accordion button {
+            color: blue;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        div#accordion ol li {
+            color: white;
+        }
+
+        .card-body {
+            background-color: #212121;
+        }
+
+        .table>thead>tr>th {
+            border-bottom: 0px solid transparent !important;
+        }
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 0px solid transparent;
         }
     </style>
 

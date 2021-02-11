@@ -5,8 +5,8 @@
 @section('content')
 
 <!-- Bootstrap Boilerplate... -->
-
 <div class="panel-body">
+    <h1 class="title">Add new Task</h1>
     <!-- Display Validation Errors -->
     @include('common.errors')
 
@@ -101,7 +101,7 @@
 
                     <!-- Task Category -->
                     <td class="table-text">
-                        <div>{{ $task->cat_name }}</div>
+                        <div>{{ $task->categories->name }}</div>
                     </td>
 
                     <!-- Delete Button -->

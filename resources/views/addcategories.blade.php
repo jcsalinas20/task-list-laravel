@@ -5,8 +5,8 @@
 @section('content')
 
 <!-- Bootstrap Boilerplate... -->
-
 <div class="panel-body">
+    <h1 class="title">Add new Category</h1>
     <!-- Display Validation Errors -->
     @include('common.errors')
 
