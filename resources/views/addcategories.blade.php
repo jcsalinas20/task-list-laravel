@@ -44,12 +44,22 @@
             </div>
         </div>
     </form>
-    {{-- <table class="table table-striped task-table">
+</div>
+
+@if (count($categories) > 0)
+<div class="panel my-panel panel-default">
+    <div class="panel-heading">
+        Category List
+    </div>
+
+    <div class="panel-body">
+    <table class="table table-striped task-table">
 
         <!-- Table Headings -->
         <thead>
+            <th>ID</th>
             <th>Name</th>
-            <th>Category</th>
+            <th>Category Parent</th>
             <th>&nbsp;</th>
         </thead>
 
@@ -57,22 +67,23 @@
         <tbody>
             @foreach ($categories as $category)
             <tr id="{{ $category->id }}">
-                <!-- Task Name -->
+
+                <td class="table-text">
+                    <div>{{ $category->id }}</div>
+                </td>
+
                 <td class="table-text">
                     <div>{{ $category->name }}</div>
                 </td>
 
-                <!-- Task Category -->
                 <td class="table-text">
-                    <div>{{ $category->cat_name }}</div>
+                    <div>{{ ($category->parent) ? $category->category_parent->name : '-' }}</div>
                 </td>
 
-                <!-- Delete Button -->
                 <td>
-                    <form action="{{ url('/category/detele'.$category->id) }}" method="POST">
+                    <form action="{{ url('/category/detele/'.$category->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-
                         <button type="submit" class="btn btn-danger">
                             <i class="fa fa-trash"></i> Delete
                         </button>
@@ -81,7 +92,8 @@
             </tr>
             @endforeach
         </tbody>
-    </table> --}}
+    </table>
 </div>
+@endif
 
 @endsection

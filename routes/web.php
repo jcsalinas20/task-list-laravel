@@ -21,7 +21,7 @@ Route::get('/category/show', function () {
  * Add New Categories
  */
 Route::get('/category/add', function () {
-    $categories = Category::select("*")->orderBy('name', 'asc')->get();
+    $categories = Category::select("*")->with('category_parent')->orderBy('name', 'asc')->get();
 
     return view('addcategories', [
         'categories' => $categories
