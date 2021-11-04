@@ -11,7 +11,7 @@
     @include('common.errors')
 
     <!-- New Category Form -->
-    <form action="{{ url('category') }}" method="POST" class="form-horizontal">
+    <form action="{{ url('category/add') }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
         <!-- Category Name -->
