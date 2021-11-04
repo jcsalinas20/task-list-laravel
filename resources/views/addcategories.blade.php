@@ -81,10 +81,9 @@
                 </td>
 
                 <td>
-                    {{-- <form action="{{ url('/category/detele/'.$category->id) }}" method="POST"> --}}
-                    <form action="{{ url('/category/delete') }}" method="GET">
-                        {{-- {{ csrf_field() }} --}}
-                        {{-- {{ method_field('DELETE') }} --}}
+                    <form action="{{ url('/category/'.$category->id) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
                         <button type="submit" class="btn btn-danger">
                             <i class="fa fa-trash"></i> Delete
                         </button>
