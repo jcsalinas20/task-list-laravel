@@ -48,10 +48,15 @@ Route::post('/category/add', function (Request $request) {
 /**
  * Delete Category
  */
-Route::get('/category/delete', function (Category $category) {
-// $category->delete();
-return view('developing', []);
-// return redirect('/category');
+Route::delete('/category/{category}', function (Category $category) {
+    DB::table('tasks')->where('cat_id', $category->id)->delete();
+    $categories = DB::table('categories')->where('parent', $category->id)->get();       
+    foreach ($categories as $category_child) {
+        DB::table('tasks')->where('cat_id', $category_child->id)->delete();
+    }
+    DB::table("categories")->where("parent", $category->id)->delete();
+    $category->delete();
+    return redirect('/category');
 });
 
 /**
