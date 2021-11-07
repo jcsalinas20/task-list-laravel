@@ -12,12 +12,12 @@ Ejercicio Clase: Task List, poder añadir tareas en la lista con una categoría 
 
 ### Tasks
 
-![tasks](http://imgfz.com/i/JtFMETS.png)
+![tasks](https://raw.githubusercontent.com/jcsalinas20/task-list-laravel/main/images/index.png)
 
 ### Show Categories
 
-![showcategories](http://imgfz.com/i/5dGkOTL.png)
+![showcategories](https://raw.githubusercontent.com/jcsalinas20/task-list-laravel/main/images/showCategories.png)
 
 ### Categories
 
-![categories](http://imgfz.com/i/t5k8re9.png)
+![categories](https://raw.githubusercontent.com/jcsalinas20/task-list-laravel/main/images/categories.png)
